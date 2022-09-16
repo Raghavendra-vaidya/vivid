@@ -1,2 +1,2 @@
 # vivid
-Mobile app automation framework using appium-java bindings
+Mobile app automation framework using appium-java bindings :iphone:
