@@ -1,0 +1,1 @@
+appium --port 5554 & appium --port 5556
