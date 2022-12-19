@@ -1,6 +1,7 @@
 package com.vivid.configuration;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -9,6 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -27,18 +29,24 @@ public class BaseTest {
     }
 
     @BeforeMethod
-    @Parameters({"deviceName","platformVersion","portNumber"})
-    public void initiateMobileDriver(String deviceName, String platformVersion,String portNumber ){
+    @Parameters({"deviceName","platformVersion","systemPort"})
+    public void initiateMobileDriver(String deviceName, String platformVersion,String systemPort ){
+        File root = new File(System.getProperty("user.dir"));
+        File app = new File(root, "src/main/resources/Rappv1.apk");
+
         DesiredCapabilities desiredCapabilities =  new DesiredCapabilities();
-        desiredCapabilities.setCapability("deviceName", deviceName);
+        desiredCapabilities.setCapability("avd", deviceName);
         desiredCapabilities.setCapability("platformVersion", platformVersion);
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("appPackage", "com.android.calculator2");
-        desiredCapabilities.setCapability("appActivity", ".Calculator");
+        desiredCapabilities.setCapability("automationName","uiAutomator2");
+        desiredCapabilities.setCapability("systemPort",Integer.parseInt(systemPort));
+        desiredCapabilities.setCapability("app", app.getAbsolutePath());
+        desiredCapabilities.setCapability("appPackage", "com.rapp");
+        desiredCapabilities.setCapability("appActivity", "com.rapp.MainActivity");
 
         try
         {
-            setDriverInstance(new AppiumDriver(new URL("http://0.0.0.0:"+portNumber+"/wd/hub"),desiredCapabilities));
+            setDriverInstance(new AppiumDriver(new URL("http://127.0.0.1:4723/wd/hub"),desiredCapabilities));
         }
         catch (MalformedURLException e) {throw new RuntimeException(e);}
     }
@@ -59,4 +67,5 @@ public class BaseTest {
         service.start();
         System.out.println("Appium service started");
     }
+
 }

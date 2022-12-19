@@ -1,1 +1,1 @@
-appium --port 5554 & appium --port 5556
+appium --address 127.0.0.1--port 4723

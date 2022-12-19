@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" parallel="tests">
-    <test verbose="2" preserve-order="true"
-          name="Device 1">
-        <parameter name="deviceName" value="Pixel_API_33"></parameter>
+    <test verbose="2" name="Device 1">
+        <parameter name="deviceName" value="AND_13"></parameter>
         <parameter name="platformVersion" value="13"></parameter>
-        <parameter name="portNumber" value="5555"></parameter>
+        <parameter name="systemPort" value="8200"></parameter>
+        <parameter name="uuid" value="emulator-5554"></parameter>
         <classes>
             <class name="com.vivid.configuration.TestClass1"></class>
         </classes>
     </test>
-    <test verbose="2" preserve-order="true"
-          name="Device 2">
-        <parameter name="deviceName" value="Emu_API_31"></parameter>
+    <test verbose="2" name="Device 2">
+        <parameter name="deviceName" value="AND_12"></parameter>
         <parameter name="platformVersion" value="12"></parameter>
-        <parameter name="portNumber" value="5556"></parameter>
+        <parameter name="systemPort" value="8201"></parameter>
+        <parameter name="uuid" value="emulator-5556"></parameter>
         <classes>
             <class name="com.vivid.configuration.TestClass1"></class>
         </classes>

@@ -12,6 +12,11 @@ public class TestClass1 extends BaseTest{
     public void firsttest(){
 
         System.out.println("calculator opened");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         Assert.assertTrue(true);
     }
 }
