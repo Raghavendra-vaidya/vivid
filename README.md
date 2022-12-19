@@ -28,3 +28,7 @@ iOS:
 1. Multiple simulators
 2. simulator + real devices (Out of scope rite now)
 3. Multiple devices(Out of scope rite now)
+
+---
+
+![img.png](img.png)
